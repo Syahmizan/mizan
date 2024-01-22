@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="ConversionCalculator.css">
+<title>ConversionCalculator</title>
+</head>
+
+<body>
+<div class="x">
+<h1>Conversion Calculator</h1>
+<div class="nav" >	
+	<a href="ConversionCalculator.html"><img src="convert.png" width="102" height="74" class="logo" alt=""></a>
+	<ul>
+	<li><a href="Homepage.html"><b>Homepage</b></a></li>
+	<li><a href="ConversionPage.html"><b>Conversion Page</b></a></li>	
+	</ul>
+  </div><hr><br><br><br>
+	
+<h2 style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><u>Temperature Conversion Calculator</u></h2><br><br><br><br><br><br><br>
+
+<div align="center">
+  <label for="inputTemperature">Enter Temperature:</label><br><br>
+  <input type="number" id="inputTemperature" step="10" style="width: 400px; height: 30px; border-radius: 25px;font-weight: bold;border: 2px solid #020202;text-align: center;font-size: 18px"><br><br><br><br><br><br><br>
+	
+  <select id="fromUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+    <option value="kelvin">Kelvin</option>
+  </select><br><br><br>
+	
+  <p style="font-size: 22px;font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';line-height: 1.2;">to</p><br><br>
+	
+  <select id="toUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+    <option value="kelvin">Kelvin</option>
+  </select>
+  <br><br><br><br><br><br>
+
+	
+  <button type="button" onclick="convertTemperature()" ><b>Convert</b></button><br><br><br><br>
+<hr><br>
+  <div id="result"></div><br><br><br>
+<hr>	
+	</div>
+
+    <script>
+    function convertTemperature() {
+      const inputTemperature = parseFloat(document.getElementById("inputTemperature").value);
+      const fromUnit = document.getElementById("fromUnit").value;
+      const toUnit = document.getElementById("toUnit").value;
+      let result = '';
+
+      if (fromUnit === "celsius") {
+        if (toUnit === "fahrenheit") {
+          result = `${inputTemperature} Celsius is equal to ${(inputTemperature * 9/5 + 32).toFixed(2)} Fahrenheit`;
+        } else if (toUnit === "kelvin") {
+          result = `${inputTemperature} Celsius is equal to ${(inputTemperature + 273.15).toFixed(2)} Kelvin`;
+        } else {
+          result = `No conversion needed, already in Celsius: ${inputTemperature} Celsius`;
+        }
+      } else if (fromUnit === "fahrenheit") {
+        if (toUnit === "celsius") {
+          result = `${inputTemperature} Fahrenheit is equal to ${((inputTemperature - 32) * 5/9).toFixed(2)} Celsius`;
+        } else if (toUnit === "kelvin") {
+          result = `${inputTemperature} Fahrenheit is equal to ${((inputTemperature - 32) * 5/9 + 273.15).toFixed(2)} Kelvin`;
+        } else {
+          result = `No conversion needed, already in Fahrenheit: ${inputTemperature} Fahrenheit`;
+        }
+      } else if (fromUnit === "kelvin") {
+        if (toUnit === "celsius") {
+          result = `${inputTemperature} Kelvin is equal to ${(inputTemperature - 273.15).toFixed(2)} Celsius`;
+        } else if (toUnit === "fahrenheit") {
+          result = `${inputTemperature} Kelvin is equal to ${((inputTemperature - 273.15) * 9/5 + 32).toFixed(2)} Fahrenheit`;
+        } else {
+          result = `No conversion needed, already in Kelvin: ${inputTemperature} Kelvin`;
+        }
+      }
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+<p style="text-align: center"><sup>&copy;</sup> <b>2023 Mizan All rights reserved.</b></p>
+<br><br><br><br>	
+	
+	
+	
+</div>
+</body>
+</html>
